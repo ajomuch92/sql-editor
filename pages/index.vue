@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sql-editor />
+    <sql-editor v-model="sqlQuery" />
   </div>
 </template>
 
@@ -8,7 +8,10 @@
 import sqlEditor from '~/components/sql-editor.vue'
 export default {
   name: 'Index',
-  components: { sqlEditor }
+  components: { sqlEditor },
+  data: () => ({
+    sqlQuery: ''
+  })
 }
 </script>
 
