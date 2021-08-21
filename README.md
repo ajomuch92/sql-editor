@@ -19,6 +19,7 @@ $ npm run generate
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 **Page Load Time**
+Before using Nuxt-Compress
 
 |  Platform | Time/Score   | Size   |
 | ------------ | ------------ | ------------ |
@@ -26,6 +27,15 @@ For detailed explanation on how things work, check out the [documentation](https
 | GtMetrix  | 1.4s | 672KB   |
 | Ping DOM  | 625ms | 706.4KB   |
 | Web Page Test  | 1.946s | 668KB   |
+
+After using Nuxt-Compress
+
+|  Platform | Time/Score   | Size   |
+| ------------ | ------------ | ------------ |
+| Google Page Insight  | 85/100 |    |
+| GtMetrix  | 1.2s | 672KB   |
+| Ping DOM  | 2.06s | 705.6KB   |
+| Web Page Test  | 1.813s | 668KB   |
 
 
 ## Special Directories
