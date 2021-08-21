@@ -107,7 +107,6 @@ export default {
       const regex = /^(select|SELECT) \* (from|FROM) \w*$/i
       if (regex.test(this.code)) {
         const splitData = this.code.trim().toLowerCase().split('select * from ')
-        debugger
         if (splitData.length > 1) {
           const tableName = splitData[1]
           if (this.tables.includes(tableName)) {
