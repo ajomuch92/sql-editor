@@ -17,6 +17,15 @@ $ npm run start
 $ npm run generate
 ```
 
+**Page Load Time**
+
+|  Platform | Time/Score   | Size   |
+| ------------ | ------------ | ------------ |
+| Google Page Insight  | 85/100 |    |
+| GtMetrix  | 1.4s | 672KB   |
+| Ping DOM  | 625ms | 706.4KB   |
+| Web Page Test  | 1.946s | 668KB   |
+
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Special Directories
