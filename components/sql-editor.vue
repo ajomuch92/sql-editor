@@ -42,6 +42,7 @@
         <v-card-title class="text-h5">
           {{ dialogTitle }}
         </v-card-title>
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <v-card-text v-html="dialogMessage" />
         <v-card-actions>
           <v-spacer />

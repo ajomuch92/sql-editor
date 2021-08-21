@@ -16,6 +16,29 @@
       />
     </v-card-title>
     <data-table :items="items" :headers="headers" :loading="loadingData" :search="search" />
+    <v-dialog
+      v-model="errorDialog"
+      max-width="290"
+    >
+      <v-card>
+        <v-card-title class="text-h5">
+          Error
+        </v-card-title>
+        <v-card-text>
+          There was an error during fetching the data
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn
+            color="red darken-1"
+            text
+            @click="errorDialog = false"
+          >
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -33,7 +56,8 @@ export default {
     items: [],
     headers: [],
     resultTitle: 'Results',
-    search: ''
+    search: '',
+    errorDialog: false
   }),
   methods: {
     queryHandler ({ tableName }) {
@@ -43,9 +67,9 @@ export default {
         this.headers = headers
         this.loadingData = false
         this.resultTitle = `Results for table ${tableName}`
-      }).catch((error) => {
+      }).catch(() => {
         this.loadingData = false
-        console.log(error)
+        this.errorDialog = true
       })
     },
     clearHandler () {
