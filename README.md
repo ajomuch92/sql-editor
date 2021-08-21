@@ -16,6 +16,7 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
+For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 **Page Load Time**
 
@@ -26,7 +27,6 @@ $ npm run generate
 | Ping DOM  | 625ms | 706.4KB   |
 | Web Page Test  | 1.946s | 668KB   |
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Special Directories
 
