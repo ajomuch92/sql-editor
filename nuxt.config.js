@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - sql-editor',
-    title: 'sql-editor',
+    titleTemplate: '%s - SQL Editor',
+    title: 'SQL Editor',
     htmlAttrs: {
       lang: 'en'
     },
