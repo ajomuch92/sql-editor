@@ -21,21 +21,30 @@ For detailed explanation on how things work, check out the [documentation](https
 **Page Load Time**
 Before using Nuxt-Compress
 
-|  Platform | Time/Score   | Size   |
+|  Platform | Time   | Size   |
 | ------------ | ------------ | ------------ |
-| Google Page Insight  | 85/100 |    |
+| Google Page Insight  | 1.1s |    |
 | GtMetrix  | 1.4s | 672KB   |
 | Ping DOM  | 625ms | 706.4KB   |
 | Web Page Test  | 1.946s | 668KB   |
 
 After using Nuxt-Compress
 
-|  Platform | Time/Score   | Size   |
+|  Platform | Time   | Size   |
 | ------------ | ------------ | ------------ |
-| Google Page Insight  | 85/100 |    |
+| Google Page Insight  | 0.9s |    |
 | GtMetrix  | 1.2s | 672KB   |
 | Ping DOM  | 2.06s | 705.6KB   |
 | Web Page Test  | 1.813s | 668KB   |
+
+After using Vue-Lazy-Hydration
+
+|  Platform | Time   | Size   |
+| ------------ | ------------ | ------------ |
+| Google Page Insight  | 0.9s |    |
+| GtMetrix  | 1.3s | 672KB   |
+| Ping DOM  | 1.92s | 706.4KB   |
+| Web Page Test  | 1.674s | 669KB   |
 
 
 ## Special Directories
