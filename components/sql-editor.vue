@@ -7,20 +7,54 @@
           {{ table }}
         </v-chip>
       </div>
-      <v-btn
-        color="primary"
-        depressed
-        @click="$emit('play-clicked', $event)"
-      >
-        <v-icon left>
-          mdi-play
-        </v-icon>
-        Run
-      </v-btn>
+      <div>
+        <v-btn
+          color="success"
+          depressed
+          @click="runClickHandler"
+        >
+          <v-icon left>
+            mdi-play
+          </v-icon>
+          Run
+        </v-btn>
+        <v-btn
+          color="error"
+          depressed
+          :disabled="disableClear"
+          @click="cleanHandler"
+        >
+          <v-icon left>
+            mdi-delete
+          </v-icon>
+          Clear
+        </v-btn>
+      </div>
     </div>
     <client-only placeholder="Loading...">
       <prism-editor v-model="code" class="my-editor" :highlight="highlighter" line-numbers />
     </client-only>
+    <v-dialog
+      v-model="dialog"
+      max-width="290"
+    >
+      <v-card>
+        <v-card-title class="text-h5">
+          {{ dialogTitle }}
+        </v-card-title>
+        <v-card-text v-html="dialogMessage" />
+        <v-card-actions>
+          <v-spacer />
+          <v-btn
+            color="red darken-1"
+            text
+            @click="dialog = false"
+          >
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -46,7 +80,11 @@ export default {
     }
   },
   data: () => ({
-    tables
+    tables,
+    disableClear: true,
+    dialog: false,
+    dialogMessage: '',
+    dialogTitle: ''
   }),
   computed: {
     code: {
@@ -64,6 +102,37 @@ export default {
     },
     addTableToEditor (tableName) {
       this.code = this.code + tableName
+    },
+    runClickHandler (event) {
+      const regex = /^(select|SELECT) \* (from|FROM) \w*$/i
+      if (regex.test(this.code)) {
+        const splitData = this.code.trim().toLowerCase().split('select * from ')
+        debugger
+        if (splitData.length > 1) {
+          const tableName = splitData[1]
+          if (this.tables.includes(tableName)) {
+            this.$emit('play-clicked', { event, tableName })
+            this.disableClear = false
+          } else {
+            this.dialogMessage = 'The query does not include a valid table name, please select or write one'
+            this.dialogTitle = 'Query Validator'
+            this.dialog = true
+          }
+        } else {
+          this.dialogMessage = 'You must write a table name'
+          this.dialogTitle = 'Query Validator'
+          this.dialog = true
+        }
+      } else {
+        this.dialogMessage = 'The query must be of the form <span class="font-italic">SELECT * FROM tableName</span>'
+        this.dialogTitle = 'Query Validator'
+        this.dialog = true
+      }
+    },
+    cleanHandler (event) {
+      this.disableClear = true
+      this.code = ''
+      this.$emit('clear-clicked', event)
     }
   }
 }
