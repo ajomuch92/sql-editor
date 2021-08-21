@@ -17,7 +17,7 @@
         :disabled="items.length==0"
       />
     </v-card-title>
-    <LazyHydrate>
+    <LazyHydrate when-idle>
       <data-table :items="items" :headers="headers" :loading="loadingData" :search="search" />
     </LazyHydrate>
     <LazyHydrate>
